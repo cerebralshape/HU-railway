@@ -15,8 +15,9 @@ const port = process.env.PORT || config.port;
 const app = express();
 const router = express.Router();
 const server = http.createServer(app);
-
-router.get('/', async(req, res) => res.send(paintSource(tryReadFile(path.normalize(__dirname + '/views/' + (['/', '/?'].includes(req.url) ? pages.index : pages[Object.keys(req.query)[0]]))))));
+// Correct code that sends files.
+// router.get('/', async(req, res) => res.send(paintSource(tryReadFile(path.normalize(__dirname + '/views/' + (['/', '/?'].includes(req.url) ? pages.index : pages[Object.keys(req.query)[0]]))))));
+router.get('/',async(req,res) => res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 app.use(router);
 app.use('/', (req, res, next) => {
     if (!bare.route_request(req, res)) return next()
